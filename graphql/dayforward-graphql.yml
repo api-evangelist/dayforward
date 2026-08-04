@@ -1,0 +1,49 @@
+generated: '2026-08-04'
+method: probed
+source: https://api.dayforward.com/graphql
+status: introspection-disabled
+
+endpoint:
+  url: https://api.dayforward.com/graphql
+  transport: http-post
+  content_type: application/json
+  documented: false
+  docs: null
+
+evidence:
+- probe: 'POST {"query":"{__typename}"}'
+  http_status: 200
+  content_type: application/json
+  response: '{"data":{"__typename":"Query"}}'
+  conclusion: A live, spec-conformant GraphQL server responds anonymously at this path.
+- probe: 'POST with no operation'
+  http_status: 422
+  response: '{"errors":[{"message":"no operation provided","extensions":{"code":"GRAPHQL_VALIDATION_FAILED"}}],"data":null}'
+  conclusion: Errors follow the GraphQL-over-HTTP error envelope with an extensions.code
+    discriminator.
+- probe: 'POST {"query":"{__schema{queryType{name}}}"}'
+  http_status: 200
+  response: '{"errors":[{"message":"introspection disabled","path":["__schema"]}],"data":{"__schema":null}}'
+  conclusion: Schema introspection is disabled in production, so no SDL can be captured.
+
+schema:
+  captured: false
+  reason: Introspection is disabled and Dayforward publishes no schema, SDL, persisted-query
+    manifest or public reference documentation. No schema has been reconstructed or
+    inferred — see the API Evangelist no-fabrication rule.
+  sdl_file: null
+
+response_headers_observed:
+- x-df-request-id
+- x-request-id
+- content-type
+
+notes:
+- This endpoint backs the Dayforward consumer application at www.dayforward.com; it
+  is not advertised as a public developer API.
+- Dayforward markets Workbench as including "APIs, plug-and-play widgets, single sign-on
+  support, and robust administration tools" (https://dayforward.io/solutions/dayforward-workbench)
+  but publishes no developer portal, API reference, OpenAPI/GraphQL schema or SDKs.
+- The gap to close is on Dayforward's side - publishing the Workbench API reference
+  and a machine-readable contract on their own host is what would make this surface
+  discoverable and scoreable.

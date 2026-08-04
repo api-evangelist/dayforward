@@ -1,0 +1,43 @@
+generated: '2026-08-04'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml hosts (dayforward.io, www.dayforward.com,
+  api.dayforward.com)
+hosts:
+- host: dayforward.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 19 07:18:01 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.dayforward.com
+  https: true
+  tls_version: TLSv1.3
+  hsts: true
+  hsts_max_age: 15552000
+  hsts_include_subdomains: true
+- host: api.dayforward.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 28 04:08:58 2026 GMT
+  hsts: false
+domains:
+- domain: dayforward.io
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
+- domain: dayforward.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+notes:
+- The API host api.dayforward.com does not send Strict-Transport-Security, while both
+  web hosts do.
+- dayforward.io publishes no SPF and no DMARC record; dayforward.com publishes both,
+  but the DMARC policy is p=none (monitor only, no enforcement).
+- Neither registrable domain publishes a CAA record.
+- dayforward.com is DNSSEC-signed; dayforward.io is not.
+- www.dayforward.com sends a strict Content-Security-Policy with frame-ancestors 'self',
+  object-src 'none' and upgrade-insecure-requests.

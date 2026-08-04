@@ -1,0 +1,46 @@
+# Dayforward
+
+> Dayforward is a New York-based life insurance technology and services group founded in 2019. It owns Commercial Travelers Life Insurance Company (a NY-domiciled carrier) and Dayforward Insurance Agency LLC (licensed in all 50 states), sells income-replacement term life insurance direct to consumers at dayforward.com, and licenses Workbench — a SaaS platform covering the full life insurance lifecycle from agent selling and automated underwriting through policy administration — plus managed distribution, underwriting and administration services to other carriers and distributors.
+
+<!--
+generated: 2026-08-04
+method: generated
+source: apis.yml + the artifacts in this repository (no /llms.txt is published by Dayforward; /llms.txt returns 404 on dayforward.io, www.dayforward.com and api.dayforward.com)
+-->
+
+## API surface
+
+Dayforward publishes **no public developer portal, no API documentation, no OpenAPI or GraphQL schema, and no SDKs**. Workbench is marketed as including "APIs, plug-and-play widgets, single sign-on support, and robust administration tools", but nothing machine-readable is published. Access appears to be commercial and partner-gated — contact hello@dayforward.com.
+
+- [Dayforward GraphQL API](https://api.dayforward.com/graphql): A live GraphQL endpoint that backs the consumer application. Responds anonymously to `{__typename}`; schema introspection is disabled; undocumented.
+
+## Products
+
+- [Dayforward Workbench](https://dayforward.io/solutions/dayforward-workbench): SaaS platform integrating sales, underwriting and policy administration — buying experience, agent tools, underwriting, service portal, policy administration.
+- [Insurance Products](https://dayforward.io/solutions/insurance-products): Proprietary life insurance and annuity products, including the Families First middle-market line.
+- [Managed Services](https://dayforward.io/solutions/managed-services): Outsourced distribution, underwriting and administration powered by Workbench.
+
+## Company
+
+- [Dayforward Group](https://dayforward.io/): B2B site for carriers and distributors.
+- [About the Dayforward Group](https://dayforward.io/about): Group structure, entities and investors.
+- [Dayforward consumer site](https://www.dayforward.com/): Direct-to-consumer income-replacement term life insurance.
+- [Sign in](https://www.dayforward.com/signin): Policyholder account access.
+- [Contact](https://www.dayforward.com/contact): hello@dayforward.com, help@dayforward.com, (888) 434-0228.
+- [FAQs](https://www.dayforward.com/faqs)
+- [Careers](https://www.dayforward.com/careers)
+- [GitHub](https://github.com/noho-digital): Public organization; all 22 public repositories are forks of third-party Go/JS libraries — no first-party SDK or specification.
+- [LinkedIn](https://www.linkedin.com/company/dayfwrd/)
+
+## Legal
+
+- [Terms of Use](https://www.dayforward.com/terms)
+- [Privacy Policy](https://www.dayforward.com/privacy)
+
+## API Evangelist artifacts
+
+- [GraphQL endpoint record](graphql/dayforward-graphql.yml): Probe evidence for the undocumented GraphQL surface.
+- [API conventions](conventions/dayforward-conventions.yml): Observed error envelope, request-id tracing, and what remains unknown.
+- [Conformance](conformance/dayforward-conformance.yml): Standards conformance derived from the probes.
+- [Well-known probe](well-known/dayforward-well-known.yml): Full /.well-known/ probe record, including the SPA catch-all false positives on www.dayforward.com.
+- [Domain security](security/dayforward-domain-security.yml): TLS, HSTS, DNSSEC, CAA, SPF and DMARC posture.

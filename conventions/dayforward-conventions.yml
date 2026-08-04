@@ -1,0 +1,72 @@
+generated: '2026-08-04'
+method: probed
+source: observed HTTP request/response behaviour of https://api.dayforward.com/graphql
+scope: Only what could be observed anonymously. Dayforward publishes no API documentation,
+  so every convention below is either observed on the wire or recorded as unknown -
+  none is assumed.
+
+api_style:
+  primary: graphql
+  endpoint: https://api.dayforward.com/graphql
+  method: POST
+  content_type: application/json
+  rest: false
+  note: No REST surface was found on any Dayforward host (see well-known/dayforward-well-known.yml
+    and graphql/dayforward-graphql.yml for the full probe set).
+
+request_tracing:
+  supported: true
+  response_headers:
+  - x-df-request-id
+  - x-request-id
+  format: base58-style opaque identifier (e.g. 3HSTqPDgDKU2Conpv2Anv52jDt0)
+  observed: '2026-08-04'
+  note: Both headers carried the same value on the same response; the vendor-prefixed
+    x-df-request-id and the generic x-request-id appear to be aliases.
+
+error_envelope:
+  style: graphql-over-http
+  shape: '{"errors":[{"message":..., "path":[...], "extensions":{"code":...}}],"data":null}'
+  discriminator: errors[].extensions.code
+  observed_codes:
+  - GRAPHQL_VALIDATION_FAILED
+  http_status_used: true
+  note: A malformed request returned HTTP 422 with the GraphQL error envelope; a valid
+    request that hits a server-side policy (introspection) returned HTTP 200 with
+    errors[] populated and data null. RFC 9457 problem+json is not used.
+
+idempotency:
+  supported: unknown
+  evidence: none
+  note: No idempotency key header is documented and none could be observed anonymously.
+    NO Idempotency pointer is wired in apis.yml - there is no idempotency contract
+    to point at.
+
+pagination:
+  style: unknown
+  note: Cannot be determined without the schema; introspection is disabled.
+
+versioning:
+  scheme: none-observed
+  note: No version segment in the endpoint path, no version header observed, and no
+    published versioning policy.
+
+rate_limiting:
+  signalled: false
+  headers_observed: []
+  note: No RateLimit/X-RateLimit headers were returned on the probes performed.
+
+authentication:
+  scheme: unknown
+  note: Anonymous requests are accepted for trivial meta-fields (__typename resolved
+    without credentials). The consumer web application loads Google Identity Platform
+    (identitytoolkit.googleapis.com appears in the www.dayforward.com Content-Security-Policy
+    connect/preconnect directives), which suggests a Firebase/Google Identity bearer
+    token model for the app, but Dayforward documents no authentication scheme for
+    the API and none was exercised.
+
+cross_links:
+  graphql: graphql/dayforward-graphql.yml
+  domain_security: security/dayforward-domain-security.yml
+  well_known: well-known/dayforward-well-known.yml
+  conformance: conformance/dayforward-conformance.yml

@@ -1,18 +1,61 @@
 aid: dayforward
 name: Dayforward
-description: 'Dayforward is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Dayforward is a New York-based life insurance technology and services
+  group founded in 2019 by Aaron Shapiro. It owns Commercial Travelers Life Insurance
+  Company (NY-domiciled carrier) and Dayforward Insurance Agency LLC (licensed in all
+  50 states), and sells income-replacement term life insurance direct to consumers at
+  dayforward.com. Since pivoting to B2B at dayforward.io it licenses Workbench — a SaaS
+  platform covering the full life insurance lifecycle from agent selling and automated
+  underwriting through policy administration and service — plus managed distribution,
+  underwriting and administration services to other carriers and distributors. Workbench
+  is marketed as including "APIs, plug-and-play widgets, single sign-on support, and
+  robust administration tools", but Dayforward publishes no public developer portal,
+  API documentation, OpenAPI definition or SDKs.'
 url: https://raw.githubusercontent.com/api-evangelist/dayforward/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
+image: https://storage.googleapis.com/df-prod-cdn/img/unfurl.jpg
 tags:
 - Company
-apis: []
+- Insurance
+- Life Insurance
+- Insurtech
+- Financial Services
+- Underwriting
+- Policy Administration
+- SaaS
+- GraphQL
+apis:
+- aid: dayforward:graphql
+  name: Dayforward GraphQL API
+  description: 'A live GraphQL endpoint at api.dayforward.com/graphql that backs the
+    Dayforward consumer application. Observed responding to GraphQL over HTTP POST
+    (an empty operation returns a GRAPHQL_VALIDATION_FAILED error object, and {__typename}
+    resolves to Query), but schema introspection is disabled and Dayforward publishes
+    no public documentation, reference or schema for it. Recorded as an observed,
+    undocumented surface — no schema has been captured or reconstructed.'
+  humanURL: https://dayforward.io/solutions/dayforward-workbench
+  baseURL: https://api.dayforward.com/graphql
+  tags:
+  - GraphQL
+  - Insurance
+  - Life Insurance
+  x-access: private
+  x-status: undocumented
+  x-evidence:
+    fetched: '2026-08-04'
+    url: https://api.dayforward.com/graphql
+    http_status: 200
+    content_type: application/json
+    introspection: disabled
+  properties:
+  - type: GraphQL
+    url: graphql/dayforward-graphql.yml
+  - type: Conventions
+    url: conventions/dayforward-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +63,35 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/dayforward_stock/
+  url: https://dayforward.io/
+- type: ConsumerWebsite
+  url: https://www.dayforward.com/
+- type: About
+  url: https://dayforward.io/about
+- type: SignUp
+  url: https://www.dayforward.com/signin
+- type: Support
+  url: https://www.dayforward.com/contact
+- type: FAQ
+  url: https://www.dayforward.com/faqs
+- type: TermsOfService
+  url: https://www.dayforward.com/terms
+- type: PrivacyPolicy
+  url: https://www.dayforward.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/noho-digital
+- type: LinkedIn
+  url: https://www.linkedin.com/company/dayfwrd/
+- type: Careers
+  url: https://www.dayforward.com/careers
+- type: Conformance
+  url: conformance/dayforward-conformance.yml
+- type: LLMsTxt
+  url: llms/dayforward-llms.txt
+- type: DomainSecurity
+  url: security/dayforward-domain-security.yml
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v1

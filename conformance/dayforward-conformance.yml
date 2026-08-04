@@ -1,0 +1,66 @@
+generated: '2026-08-04'
+method: derived
+source: probes recorded in graphql/dayforward-graphql.yml, conventions/dayforward-conventions.yml,
+  well-known/dayforward-well-known.yml, security/dayforward-domain-security.yml
+note: Derived from observed behaviour only. Dayforward publishes no compliance program,
+  certification page or trust center, so NO `Compliance` pointer is wired.
+
+standards:
+- id: graphql-over-http
+  conforms: true
+  evidence: POST application/json to https://api.dayforward.com/graphql returns the
+    GraphQL response envelope; malformed operations return errors[].extensions.code
+    = GRAPHQL_VALIDATION_FAILED.
+- id: graphql-introspection
+  conforms: false
+  evidence: '__schema returns {"message":"introspection disabled"} - introspection
+    is turned off in production.'
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI/Swagger document found at any probed path on dayforward.io,
+    www.dayforward.com or api.dayforward.com.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is published or documented.
+- id: oauth2
+  conforms: false
+  evidence: No /.well-known/oauth-authorization-server on any host (the www 200s are
+    SPA catch-all HTML).
+- id: oidc
+  conforms: false
+  evidence: No genuine /.well-known/openid-configuration. The consumer app federates
+    to Google Identity Platform (identitytoolkit.googleapis.com) but Dayforward publishes
+    no discovery document of its own.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the GraphQL error envelope, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on all three hosts.
+- id: rfc8615-well-known-uris
+  conforms: false
+  evidence: No genuine /.well-known/ document is served on any host.
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on
+    all hosts.
+- id: mcp
+  conforms: false
+  evidence: No hosted or published Model Context Protocol server found.
+- id: llmstxt
+  conforms: false
+  evidence: /llms.txt returns 404 on all hosts.
+- id: hsts
+  conforms: partial
+  evidence: dayforward.io (max-age=31536000) and www.dayforward.com (max-age=15552000,
+    includeSubDomains) send HSTS; the API host api.dayforward.com does not.
+- id: dnssec
+  conforms: partial
+  evidence: dayforward.com is DNSSEC-signed; dayforward.io is not.
+- id: dmarc
+  conforms: partial
+  evidence: dayforward.com publishes DMARC at p=none (monitor only); dayforward.io
+    publishes no SPF and no DMARC.
+
+certifications_published: []
+compliance_program_published: false

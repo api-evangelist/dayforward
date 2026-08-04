@@ -42,5 +42,24 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Dayforward is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/dayforward_stock/
+Dayforward is a New York-based life insurance technology and services group founded in 2019 by Aaron Shapiro. It owns Commercial Travelers Life Insurance Company (a NY-domiciled carrier) and Dayforward Insurance Agency LLC (licensed in all 50 states), and sells income-replacement term life insurance direct to consumers at dayforward.com. Since pivoting to B2B at dayforward.io it licenses **Workbench** — a SaaS platform covering the full life insurance lifecycle from agent selling and automated underwriting through policy administration and service — plus managed distribution, underwriting and administration services to other carriers and distributors.
+
+- Company (B2B): https://dayforward.io/
+- Consumer: https://www.dayforward.com/
+
+## API surface
+
+Dayforward publishes **no public developer portal, no API documentation, no OpenAPI or GraphQL schema, and no SDKs**. Workbench is marketed as including "APIs, plug-and-play widgets, single sign-on support, and robust administration tools" ([source](https://dayforward.io/solutions/dayforward-workbench)), but nothing machine-readable is published on any Dayforward host.
+
+What a public probe on 2026-08-04 did find:
+
+| Surface | Result |
+|---|---|
+| `https://api.dayforward.com/graphql` | **Live GraphQL endpoint** — answers `{__typename}` anonymously; **introspection disabled**; undocumented |
+| OpenAPI / Swagger | Not found on `dayforward.io`, `www.dayforward.com` or `api.dayforward.com` |
+| `/.well-known/*` (security.txt, openid-configuration, oauth-authorization-server, api-catalog, agent-card.json, agent.json) | None published — the 200s on `www.dayforward.com` are single-page-app catch-all HTML |
+| `/llms.txt` | 404 on all hosts |
+| MCP server / A2A agent card | None |
+| SDKs / packages | None on npm, PyPI or elsewhere; the [noho-digital](https://github.com/noho-digital) GitHub org's 22 public repos are all forks of third-party libraries |
+
+The artifacts in this repository record that probe. No schema has been reconstructed or inferred.

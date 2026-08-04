@@ -1,0 +1,60 @@
+generated: '2026-08-04'
+method: probed
+source: live GET probes of /.well-known/* on every Dayforward host
+result: none-found
+
+hosts:
+- host: https://dayforward.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+
+- host: https://www.dayforward.com
+  spa_catch_all: true
+  note: This host is a single-page app that answers HTTP 200 with the same 5,289-byte
+    HTML shell for EVERY unmatched path. The 200s below are catch-all false positives,
+    not published documents - each returned text/html beginning with <!doctype html>
+    and the page title "Life Insurance That Guarantees Your Income". Verified by
+    byte-identical content-length across unrelated paths. None is wired as a WellKnown
+    pointer.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 200, valid: false, reason: html-spa-shell}
+  - {path: /.well-known/oauth-authorization-server, status: 200, valid: false, reason: html-spa-shell}
+  - {path: /.well-known/oauth-protected-resource, status: 200, valid: false, reason: html-spa-shell}
+  - {path: /.well-known/api-catalog, status: 200, valid: false, reason: html-spa-shell}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+  - {path: /robots.txt, status: 200, valid: true, content: 'User-agent: * / Disallow:
+      /interview/'}
+  - {path: /sitemap.xml, status: 200, valid: true}
+
+- host: https://api.dayforward.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+
+summary:
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false
+  llms_txt: false
+notes:
+- No genuine /.well-known/ document is published on any Dayforward host, so no WellKnown
+  or SecurityTxt pointer is wired in apis.yml. This file records the probe, not a find.
