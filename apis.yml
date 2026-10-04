@@ -46,7 +46,7 @@ tags:
 - Insurance
 - Life Insurance
 - Insurtech
-- Financial-Services
+- Financial Services
 - Underwriting
 - Policy Administration
 - Software-as-a-Service
@@ -61,6 +61,7 @@ tags_raw:
 - Policy Administration
 - SaaS
 - GraphQL
+- Financial-Services
 apis:
 - aid: dayforward:graphql
   name: Dayforward GraphQL API
