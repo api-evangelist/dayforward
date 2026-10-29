@@ -64,24 +64,88 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Dayforward is a New York-based life insurance technology and services group founded in 2019 by Aaron Shapiro. It owns Commercial Travelers Life Insurance Company (a NY-domiciled carrier) and Dayforward Insurance Agency LLC (licensed in all 50 states), and sells income-replacement term life insurance direct to consumers at dayforward.com. Since pivoting to B2B at dayforward.io it licenses **Workbench** — a SaaS platform covering the full life insurance lifecycle from agent selling and automated underwriting through policy administration and service — plus managed distribution, underwriting and administration services to other carriers and distributors.
+Dayforward is a New York-based life insurance technology and services group founded in 2019 by Aaron Shapiro. It owns Commercial Travelers Life Insurance Company (NY-domiciled carrier) and Dayforward Insurance Agency LLC (licensed in all 50 states), and sells income-replacement term life insurance direct to consumers at dayforward.com. Since pivoting to B2B at dayforward.io it licenses Workbench — a SaaS platform covering the full life insurance lifecycle from agent selling and automated underwriting through policy administration and service — plus managed distribution, underwriting and administration services to other carriers and distributors. Workbench is marketed as including "APIs, plug-and-play widgets, single sign-on support, and robust administration tools", but Dayforward publishes no public developer portal, API documentation, OpenAPI definition or SDKs.
 
-- Company (B2B): https://dayforward.io/
-- Consumer: https://www.dayforward.com/
+**Areas:** Company · Insurance · Life Insurance · Insurtech · Financial Services · Underwriting · Policy Administration · Software-as-a-Service · GraphQL
 
-## API surface
+## Dayforward on APIs.io
 
-Dayforward publishes **no public developer portal, no API documentation, no OpenAPI or GraphQL schema, and no SDKs**. Workbench is marketed as including "APIs, plug-and-play widgets, single sign-on support, and robust administration tools" ([source](https://dayforward.io/solutions/dayforward-workbench)), but nothing machine-readable is published on any Dayforward host.
+Everything profiled for Dayforward is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dayforward/](https://apis.io/providers/dayforward/)** — or go straight to one of the APIs or properties below.
 
-What a public probe on 2026-08-04 did find:
+### APIs (1)
 
-| Surface | Result |
+- [Dayforward GraphQL API](https://apis.io/apis/dayforward/graphql/) — A live GraphQL endpoint at api.dayforward.com/graphql that backs the Dayforward consumer application. Observed responding to GraphQL over HTTP POST (an…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Dayforward Domain Security](https://apis.io/security/dayforward/dayforward-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://dayforward.io/)
+- [Sign up](https://www.dayforward.com/signin)
+- [Support](https://www.dayforward.com/contact)
+- [Terms of service](https://www.dayforward.com/terms)
+- [Privacy policy](https://www.dayforward.com/privacy)
+- [GitHub](https://github.com/noho-digital)
+
+## API Evangelist rating
+
+**Kin Score 7.1** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| `https://api.dayforward.com/graphql` | **Live GraphQL endpoint** — answers `{__typename}` anonymously; **introspection disabled**; undocumented |
-| OpenAPI / Swagger | Not found on `dayforward.io`, `www.dayforward.com` or `api.dayforward.com` |
-| `/.well-known/*` (security.txt, openid-configuration, oauth-authorization-server, api-catalog, agent-card.json, agent.json) | None published — the 200s on `www.dayforward.com` are single-page-app catch-all HTML |
-| `/llms.txt` | 404 on all hosts |
-| MCP server / A2A agent card | None |
-| SDKs / packages | None on npm, PyPI or elsewhere; the [noho-digital](https://github.com/noho-digital) GitHub org's 22 public repos are all forks of third-party libraries |
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 0.0 |
+| Access clarity | 0.0 |
 
-The artifacts in this repository record that probe. No schema has been reconstructed or inferred.
+**Agent readiness 0.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.6** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dayforward/](https://apis.io/providers/dayforward/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Dayforward: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dayforward/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
